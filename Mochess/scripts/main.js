@@ -37,10 +37,14 @@ var lastRender = 0;
 window.requestAnimationFrame(loop);
 
 canvas.addEventListener("mousedown", function (e) {
-  const rect = canvas.getBoundingClientRect()
-  console.log(e.clientX - rect.x);
-});
+  const rect = canvas.getBoundingClientRect();
+  let mouseX = e.clientX - rect.x;
+  let mouseY = e.clientY - rect.y;
 
+  let testTile = getTile(mouseX, mouseY);
+
+  testTile.print();
+});
 
 function drawChessboard() {
   // draw a checkered background
@@ -60,4 +64,10 @@ function drawChessboard() {
   }
 }
 
-export { ctx, WIDTH }
+function getTile(x, y) {
+  let tileX = Math.floor((Math.abs(x / WIDTH) + 1));
+  let tileY = Math.floor((Math.abs(y / HEIGHT) + 1));
+  return new Tile(tileX, tileY);
+}
+
+export { ctx, WIDTH, HEIGHT }

@@ -1,15 +1,17 @@
+import { WIDTH, HEIGHT } from './main.js';
+
 export class Tile {
 
-    tileX;
-    tileY;
-
     constructor(x, y) {
-        tileX = x;
-        tileY = y;
+        this.tileX = x;
+        this.tileY = y;
     }
 
-    drawX = tileX - 1;
-    drawY = tileY - 1;
+    print() {
+        console.log("x: " + this.tileX);
+        console.log("y: " + this.tileY);
+        console.log("");
+    }
 
     isEqualTo(tileTwo) {
         if ((this.getX() == tileTwo.getX()) && (this.getY() == tileTwo.getY())) {
