@@ -36,7 +36,7 @@ function loop(timestamp) {
 var lastRender = 0;
 window.requestAnimationFrame(loop);
 
-canvas.addEventListener("mousedown", function (e) {
+canvas.addEventListener("mousedown", async function (e) {
   const rect = canvas.getBoundingClientRect();
   let mouseX = e.clientX - rect.x;
   let mouseY = e.clientY - rect.y;
@@ -44,7 +44,15 @@ canvas.addEventListener("mousedown", function (e) {
   let testTile = getTile(mouseX, mouseY);
 
   testTile.print();
+
+  getUser();
 });
+
+const getUser = async () => {
+  const response = await fetch('http://localhost:5000/user')
+  const data = await response.json();
+  console.log({ data });
+}
 
 function drawChessboard() {
   // draw a checkered background
