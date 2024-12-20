@@ -5,5 +5,5 @@ export default {
     build: {
         sourcemap: true,
     },
-    base: '/rossicraft/'
+    base: '/online-chess/'
 }
